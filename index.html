@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>WFIT - projekt</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/controls.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
@@ -15,9 +16,32 @@
     </section>
     <section class="slide">
       <h1>Symulacja</h1>
-      <canvas id="graphCanvas" width="500px" height="500px">
+      <section class="side graph">
+        <h2>Wykres</h2>
+        <canvas id="graphCanvas" width="500px" height="500px">
+      </section>
+      <section class="side controlPanel">
+        <h2>Ustawienia</h2>
+        <h3 class="range-label range-label-speed">Częstotliwość animacji [Hz]</h3>
+        <div class="control-box">
+          <input type="range" min="0" max="120" value="30" class="range-slider range-slider-speed" id="range-slider-speed" />
+  				<input type="number" min="0" max="120" value="30" class="input-slider input-slider-speed" id="input-slider-speed" />
+        </div>
+        <h3 class="range-label range-label-speed">Prędkość grupowa</h3>
+        <div class="control-box">
+		      <input type="range" min="-5" max="5" value="1" class="range-slider range-slider-group-vel" id="range-slider-group-vel" />
+		      <input type="number" min="-5" max="5" value="1" class="input-slider input-slider-group=vel" id="input-slider-group-vel" />
+        </div>
+        <h3 class="range-label range-label-speed">Delta X</h3>
+        <div class="control-box">
+          <input type="range" min="0" max="50" value="1" class="range-slider range-slider-delta" id="range-slider-delta" />
+  				<input type="number" min="0" max="50" value="1" class="input-slider input-slider-delta" id="input-slider-delta" />
+        </div>
+			</section>
+
     </section>
     <footer>Wykonał Jakub Marchut 318805</footer>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/controls.js"></script>
   </body>
 </html>

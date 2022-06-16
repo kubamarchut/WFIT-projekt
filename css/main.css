@@ -4,6 +4,12 @@
   font-family: 'Nunito', sans-serif;
   color: #E0E2E3;
 }
+h1{
+  font-size: 2em;
+}
+h2{
+  font-size: 1.6em;
+}
 html{
 }
 body{
@@ -11,7 +17,7 @@ body{
   margin: 0;
 }
 section.slide{
-  min-height: 100vh;
+  height: 100vh;
   background-color: #30474F;
   padding: 10px 20px;
 }
@@ -19,6 +25,15 @@ section.slide:first-of-type{
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('./../img/bg.jpg');
   background-size: cover;
   background-position: center;
+}
+section.slide:nth-child(2){
+  display: grid;
+  grid-template: "title title"
+                 "graph controls";
+}
+section.slide:nth-child(2) > h1{
+  grid-area: title;
+  margin-bottom: 0;
 }
 div.page-title{
   position: absolute;
@@ -36,7 +51,12 @@ div.page-title{
 
   border: 2px solid #6C97A6;
 }
-
+.graph{
+  grid-area: graph;
+}
+.controlPanel{
+  grid-area: controls;
+}
 
 footer{
   position: fixed;

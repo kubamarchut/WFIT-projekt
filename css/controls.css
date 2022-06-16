@@ -1,0 +1,27 @@
+.controlPanel h3{
+  font-weight: normal;
+  margin-bottom: 0;
+}
+.controlPanel .control-box{
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+}
+.input-slider{
+  color: #000;
+}
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.range-slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
