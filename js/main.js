@@ -8,9 +8,37 @@ let topBottomOffset = 0.1;
 ctx.moveTo(0, canvasHeight/2);
 ctx.lineTo(canvasWidth, canvasHeight/2);
 
-ctx.moveTo(0, canvasHeight/2);
-for(x=0; x<=canvasWidth; x+=1) {
-    y = canvasHeight/2 - Math.sin(x*Math.PI/180) * canvasHeight/2 * (1 - topBottomOffset);
-    ctx.lineTo(x,y);
+let wavenumber = 1;
+let grpVel = 1;
+let t = 0;
+let deltaX = 1;
+let playAnimation = true;
+let animationFrequency = 60;
+
+function drawGrid(){
+  // draw vertical line
+  ctx.moveTo(0, canvasHeight/2);
+  ctx.lineTo(canvasWidth, canvasHeight/2);
+
+  // draw horizontal line
+  ctx.moveTo(t%canvasWidth, 0);
+  ctx.lineTo(t%canvasWidth, canvasHeight);
+  ctx.moveTo(0, canvasHeight/2);
 }
-ctx.stroke();
+
+function animate() {
+  t++;
+  ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+  ctx.beginPath();
+  drawGrid();
+  ctx.moveTo(0, 0.5*canvasHeight + 0.4*canvasHeight * Math.sin(0.3 * x - 0.1 * t));
+
+  for (var x = 0; x < canvasWidth; x++) {
+    ctx.lineTo(0 + x * deltaX, 0.5*canvasHeight + 0.3*canvasHeight * Math.sin(wavenumber * (x - t)) * Math.sin(wavenumber * (0.05 * x - 0.05 * grpVel * t)));
+  }
+  ctx.stroke();
+  if (playAnimation) {
+    setTimeout(animate, 1/animationFrequency*1000);
+  }
+}
+animate();
