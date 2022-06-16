@@ -2,6 +2,7 @@
 *{
   box-sizing: border-box;
   font-family: 'Nunito', sans-serif;
+  color: #E0E2E3;
 }
 html{
 }
@@ -29,7 +30,12 @@ div.page-title{
   text-align: center;
   color: #fff;
 }
+#graphCanvas{
+  width: 70vmin;
+  height: 70vmin;
 
+  border: 2px solid #6C97A6;
+}
 
 
 footer{
