@@ -8,6 +8,7 @@ let topBottomOffset = 0.1;
 ctx.moveTo(0, canvasHeight/2);
 ctx.lineTo(canvasWidth, canvasHeight/2);
 
+let amplitude = 0.4;
 let wavenumber = 1;
 let grpVel = 1;
 let t = 0;
@@ -31,11 +32,12 @@ function animate() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
   ctx.beginPath();
   drawGrid();
-  ctx.moveTo(0, 0.5*canvasHeight + 0.4*canvasHeight * Math.sin(0.3 * x - 0.1 * t));
+  ctx.moveTo(0, 0.5*canvasHeight + amplitude*canvasHeight * Math.sin(0.3 * x - 0.1 * t));
 
   for (var x = 0; x < canvasWidth; x++) {
-    ctx.lineTo(0 + x * deltaX, 0.5*canvasHeight + 0.3*canvasHeight * Math.sin(wavenumber * (x - t)) * Math.sin(wavenumber * (0.05 * x - 0.05 * grpVel * t)));
+    ctx.lineTo(0 + x * deltaX, 0.5*canvasHeight + amplitude*canvasHeight * Math.sin(wavenumber * (x - t)) * Math.sin(wavenumber * (0.05 * x - 0.05 * grpVel * t)));
   }
+  ctx.strokeStyle = "#1E1E1E";
   ctx.stroke();
   if (playAnimation) {
     setTimeout(animate, 1/animationFrequency*1000);

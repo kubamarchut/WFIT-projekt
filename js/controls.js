@@ -34,4 +34,7 @@ function updateParams(e){
     deltaX = target.value;
     t=0;
   }
+  else if (paramType == "amplitude") {
+    amplitude = target.value/100;
+  }
 }
