@@ -3,12 +3,18 @@ let rangeInputs = document.querySelectorAll('.control-box');
 rangeInputs.forEach((item, i) => {
   let rangeInput = item.querySelector('input[type=range]');
   let numInput = item.querySelector('input[type=number]');
+  if (rangeInput != null) {
+      rangeInput.addEventListener('input', updateSiblingInput);
+      numInput.addEventListener('input', updateSiblingInput);
 
-  rangeInput.addEventListener('input', updateSiblingInput);
-  numInput.addEventListener('input', updateSiblingInput);
-
-  rangeInput.addEventListener('change', updateParams);
-  numInput.addEventListener('change', updateParams);
+      rangeInput.addEventListener('change', updateParams);
+      numInput.addEventListener('change', updateParams);
+  }
+  else {
+    console.log(item);
+    let checkboxInput = item.querySelector('input[type=checkbox]');
+    checkboxInput.addEventListener('change', updateParams);
+  }
 });
 
 // events handlers
@@ -24,7 +30,11 @@ function updateParams(e){
   let target = e.target;
   let paramType = target.id.split('-')[target.id.split('-').length - 1];
 
-  if (paramType == "speed") {
+  if (paramType == "numpf") {
+    numpf = target.value;
+    reCalculateParams();
+  }
+  else if (paramType == "speed") {
     animationFrequency = target.value;
   }
   else if (paramType == "groupvel") {
@@ -41,7 +51,13 @@ function updateParams(e){
   else if (paramType == "amplitude") {
     amplitude = target.value/100;
   }
-  else if (paramType == "wavenumber") {
-    wavenumber = target.value;
+  else if (paramType == "grid") {
+    showGrid = target.checked;
+  }
+  else if (paramType == "grpVel") {
+    showGrpVel = target.checked;
+  }
+  else if (paramType == "phsVel") {
+    showPhsVel = target.checked;
   }
 }
