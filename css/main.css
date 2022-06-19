@@ -15,10 +15,12 @@ html{
 body{
   min-height: 100vh;
   margin: 0;
+  background-color: #273337;
 }
 section.slide{
-  height: 100vh;
-  background-color: #30474F;
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 10px 20px;
 }
 section.slide:first-of-type{
@@ -26,10 +28,8 @@ section.slide:first-of-type{
   background-size: cover;
   background-position: center;
 }
-section.slide:nth-child(2){
-  display: grid;
-  grid-template: "title title"
-                 "graph controls";
+section.slide:last-of-type{
+  padding-bottom: 25px;
 }
 section.slide:nth-child(2) > h1{
   grid-area: title;
@@ -46,8 +46,8 @@ div.page-title{
   color: #fff;
 }
 #graphCanvas{
-  width: 70vmin;
-  height: 70vmin;
+  width: 100%;
+  height: 75vmin;
 
   background: #C2CACF;
   border: 4px solid #1e1e1e;
@@ -72,5 +72,13 @@ footer{
 @media (min-width: 30em) {
   div.page-title{
     font-size: 2em;
+  }
+  section.slide:nth-child(2){
+    max-height: 100vh;
+    display: grid;
+    column-gap: 20px;
+    grid-template: "title title"
+                   "graph controls";
+      grid-template-columns: 1fr 250px;
   }
 }
