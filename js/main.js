@@ -4,27 +4,35 @@ let ctx = c.getContext("2d");
 let canvasWidth = c.width;
 let canvasHeight = c.height;
 
-let amplitude = 0.4;
-let wavenumber = 1;
+let pointRadius = 6;
+
 let grpVel = 1;
+let phsVel = 1;
+let amplitude = 0.4;
 let t = 0;
+
+let animationFrequency = 30;
 let deltaX = 1;
 let playAnimation = true;
-let animationFrequency = 30;
 
-lambda = canvasWidth/10;
-numWP = 3;
-k = 2 * numWP * Math.PI / lambda;
-dk = .05 * k;
-k1 = k + dk;    //liczba falowa 1
-k2 = k - dk;    //Liczba falowa 2
+let numWP = 3;
+let k, dk;
+let k1, k2;  //Liczba falowa 1 i 2
+let freq, df;
+let f1, f2; //częstość kołowa 1 i 2
 
-phsVel = 1;
-grpVel = 1;
-freq = phsVel * k;
-df = grpVel * dk;
-f1 = freq + df;
-f2 = freq - df;
+function reCalculateParams(){
+  let lambda = canvasWidth/10;
+  k = 2 * numWP * Math.PI / lambda;
+  dk = .05 * k;
+  k1 = k + dk;    //liczba falowa 1
+  k2 = k - dk;    //Liczba falowa 2
+
+  freq = phsVel * k;
+  df = grpVel * dk;
+  f1 = freq + df;
+  f2 = freq - df;
+}
 
 function changePhsVel(newPhsVel){
   freq = newPhsVel*k;
@@ -51,18 +59,14 @@ function drawGrid(){
   //ctx.lineTo(t%canvasWidth, canvasHeight);
   //ctx.moveTo(0, canvasHeight/2);
 }
-function drawPoint(x, y, color, stroke){
+function drawPoint(x, y, d, color){
   x = (x<0) ? canvasWidth+x : x;
   ctx.beginPath();
   ctx.moveTo(x, y);
-  ctx.arc(x, y, 6, 0, 2 * Math.PI);
+  ctx.arc(x, y, d, 0, 2 * Math.PI);
   ctx.fillStyle = color;
   ctx.fill();
 
-  ctx.strokeStyle = stroke;
-  ctx.lineWidth = 2;
-  ctx.stroke();
-  ctx.lineWidth = 1;
   ctx.moveTo(0, canvasHeight/2);
 
 }
@@ -81,8 +85,13 @@ function animate() {
   ctx.strokeStyle = "#1E1E1E";
   ctx.stroke();
 
-  drawPoint(t*grpVel % canvasWidth, 0.5*canvasHeight, "rgba(255, 207, 86, 0.75)", "#FFCF56");
-  drawPoint(t*phsVel % canvasWidth, 0.5*canvasHeight, "rgba(243, 82, 111, 0.75)", "#EA526F");
+  if(phsVel == grpVel){
+    drawPoint(t*grpVel % canvasWidth, 0.5*canvasHeight, pointRadius+2, "rgba(255, 207, 86, 1)");
+  }
+  else{
+    drawPoint(t*grpVel % canvasWidth, 0.5*canvasHeight, pointRadius, "rgba(255, 207, 86, 1)");
+  }
+  drawPoint(t*phsVel % canvasWidth, 0.5*canvasHeight, pointRadius, "rgba(243, 82, 111, 1)");
 
   ctx.beginPath();
 
@@ -90,4 +99,5 @@ function animate() {
     setTimeout(animate, 1/animationFrequency*1000);
   }
 }
+reCalculateParams();
 animate();
