@@ -8,6 +8,7 @@ rangeInputs.forEach((item, i) => {
   numInput.addEventListener('input', updateSiblingInput);
 
   rangeInput.addEventListener('change', updateParams);
+  numInput.addEventListener('change', updateParams);
 });
 
 // events handlers
@@ -27,14 +28,20 @@ function updateParams(e){
     animationFrequency = target.value;
   }
   else if (paramType == "groupvel") {
-    grpVel = target.value;
+    changeGrpVel(target.value);
+    t=0;
+  }
+  else if (paramType == "phasevel") {
+    changePhsVel(target.value);
     t=0;
   }
   else if (paramType == "delta") {
     deltaX = target.value;
-    t=0;
   }
   else if (paramType == "amplitude") {
-    amplitude = target.value/100;
+    amplitude = target.value/200;
+  }
+  else if (paramType == "wavenumber") {
+    wavenumber = target.value;
   }
 }
