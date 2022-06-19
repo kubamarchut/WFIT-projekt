@@ -3,12 +3,8 @@ let ctx = c.getContext("2d");
 
 let canvasWidth = c.width;
 let canvasHeight = c.height;
-let topBottomOffset = 0.1;
 
-ctx.moveTo(0, canvasHeight/2);
-ctx.lineTo(canvasWidth, canvasHeight/2);
-
-let amplitude = 0.2;
+let amplitude = 0.4;
 let wavenumber = 1;
 let grpVel = 1;
 let t = 0;
@@ -33,17 +29,13 @@ f2 = freq - df;
 function changePhsVel(newPhsVel){
   freq = newPhsVel*k;
   phsVel = newPhsVel;
-  console.log(phsVel);
 
   f1 = freq + df; //częstość kołowa 1
   f2 = freq - df; //częstość kołowa 2
-  console.log("hi there");
 }
 function changeGrpVel(newGrpVel){
   df = newGrpVel*dk;
   grpVel = newGrpVel;
-
-  console.log(grpVel);
 
   f1 = freq + df; //częstość kołowa 1
   f2 = freq - df; //częstość kołowa 2
@@ -84,7 +76,7 @@ function animate() {
 
 
   for (var x = 0; x < canvasWidth; x+=deltaX) {
-    ctx.lineTo(x, 0.5*canvasHeight + amplitude*canvasHeight * (Math.sin(f1 * t - k1 * x) - Math.sin(f2 * t - k2 * x)));
+    ctx.lineTo(x, 0.5*canvasHeight + 0.5*amplitude*canvasHeight * (Math.sin(f1 * t - k1 * x) - Math.sin(f2 * t - k2 * x)));
   }
   ctx.strokeStyle = "#1E1E1E";
   ctx.stroke();

@@ -39,7 +39,7 @@ function updateParams(e){
     deltaX = Number(target.value);
   }
   else if (paramType == "amplitude") {
-    amplitude = target.value/200;
+    amplitude = target.value/100;
   }
   else if (paramType == "wavenumber") {
     wavenumber = target.value;
