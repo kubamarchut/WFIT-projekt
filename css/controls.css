@@ -1,6 +1,9 @@
+.controlPanel h3{
+  margin-bottom: 0;
+}
 .controlPanel h4{
   font-weight: normal;
-  margin-bottom: 0;
+  margin: .5em 0 0;
 }
 .controlPanel .control-box{
   display: grid;
