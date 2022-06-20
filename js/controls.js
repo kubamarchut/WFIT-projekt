@@ -11,7 +11,6 @@ rangeInputs.forEach((item, i) => {
       numInput.addEventListener('change', updateParams);
   }
   else {
-    console.log(item);
     let checkboxInput = item.querySelector('input[type=checkbox]');
     checkboxInput.addEventListener('change', updateParams);
   }
