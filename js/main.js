@@ -28,7 +28,7 @@ let f1, f2; //częstość kołowa 1 i 2
 function reCalculateParams(){
   let lambda = canvasWidth/10;
   k = 2 * numpf * Math.PI / lambda;
-  dk = .05 * k;
+  dk = 0.05 * k;
   k1 = k + dk;    //liczba falowa 1
   k2 = k - dk;    //Liczba falowa 2
 
@@ -87,7 +87,7 @@ function animate() {
   ctx.clearRect(0, 0, canvasWidth, canvasHeight);
   ctx.beginPath();
   if (showGrid) drawGrid();
-  ctx.moveTo(0, 0.5*canvasHeight + amplitude*canvasHeight * Math.sin(0.3 * 0 - 0.1 * t));
+  ctx.moveTo(0, 0.5*canvasHeight + 0.5*amplitude*canvasHeight * (Math.sin(f1 * t) - Math.sin(f2 * t)));
 
 
   for (var x = 0; x < canvasWidth; x+=deltaX) {

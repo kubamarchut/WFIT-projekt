@@ -19,8 +19,6 @@ body{
 }
 section.slide{
   min-height: 100vh;
-  max-width: 1280px;
-  margin: 0 auto;
   padding: 10px 20px;
 }
 section.slide:first-of-type{
@@ -30,6 +28,8 @@ section.slide:first-of-type{
 }
 section.slide:last-of-type{
   padding-bottom: 25px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 section.slide:nth-child(2) > h1{
   grid-area: title;
