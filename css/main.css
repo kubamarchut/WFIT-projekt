@@ -69,7 +69,7 @@ footer{
   color: #fff;
 }
 
-@media (min-width: 30em) {
+@media (min-width: 54em) {
   div.page-title{
     font-size: 2em;
   }
