@@ -97,10 +97,10 @@ function animate() {
   ctx.stroke();
 
   if(phsVel == grpVel && showGrpVel && showPhsVel){
-    drawPoint(t*grpVel % canvasWidth, 0.5*canvasHeight, pointRadius+2, "rgba(255, 207, 86, 1)");
+    drawPoint(t*grpVel % canvasWidth, 0.5*canvasHeight, pointRadius+2, "#526ff3"); //"rgba(255, 207, 86, 1)");
   }
   else{
-    if (showGrpVel) drawPoint(t*grpVel % canvasWidth, 0.5*canvasHeight, pointRadius, "rgba(255, 207, 86, 1)");
+    if (showGrpVel) drawPoint(t*grpVel % canvasWidth, 0.5*canvasHeight, pointRadius, "#526ff3"); //"rgba(255, 207, 86, 1)");
   }
   if (showPhsVel) drawPoint(t*phsVel % canvasWidth, 0.5*canvasHeight, pointRadius, "rgba(243, 82, 111, 1)");
 

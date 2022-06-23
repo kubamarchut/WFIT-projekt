@@ -1,4 +1,5 @@
 window.addEventListener('resize', resizeCanvas);
+window.addEventListener('load', resizeCanvas);
 
 function resizeCanvas(){
   c.width = c.offsetWidth;
